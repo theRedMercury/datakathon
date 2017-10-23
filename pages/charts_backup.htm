@@ -1,0 +1,299 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">    <!--TODO-->
+		<title>TO BE DETERMINED (charts.htm)</title>
+        <!-- CHART 3D -->
+        <style type="text/css">
+            #container {
+                height: 400px;      /* 3D chart size */
+                min-width: 400px;   /* 3D chart size */
+                max-width: 400px;   /* 3D chart size */
+                margin: 0 auto;
+            }
+        </style>
+	</head>
+	<body>
+        <!--LOADING SCRIPTS-->
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>                                     <!--TODO-->
+        <script src="../js/highcharts/highcharts.js"></script>
+        <script src="../js/highcharts/highcharts-3d.js"></script>
+        <script src="../js/highcharts/highcharts-more.js"></script>
+        <script src="../js/highcharts/modules/exporting.js"></script>
+        <!--<script src="../js/highcharts/themes/dark-unica.js"></script>-->
+        <script src="../js/bootstrap/js/bootstrap.min.js"></script>
+
+        <!--SCRIPT DE TEST-->
+        <script>
+
+            var test01 = {name: "name01", brewery: "brewery01", country: "country01", ABV: 1.0, EBC: 2.0, DLUO: 0.0}; 
+            var test02 = {name: "name02", brewery: "brewery02", country: "country02", ABV: 0.0, EBC: 1.0, DLUO: 0.0}; 
+            var test03 = {name: "name03", brewery: "brewery03", country: "country03", ABV: 3.0, EBC: 0.0, DLUO: 1.0}; 
+            var test04 = {name: "name04", brewery: "brewery04", country: "country04", ABV: 1.0, EBC: 1.0, DLUO: 1.0}; 
+            var vect = [test01,test02,test03,test04];
+
+            var v3D = [];
+            var vXY = [];
+            var vYZ = [];
+            var vZX = [];
+            var vNM = [];
+
+            for (var i = 0, I = vect.length; i<I; i++){
+                v3D.push({name: vect[i].name, data: [[vect[i].ABV,vect[i].EBC,vect[i].DLUO]]});
+                vXY.push({name: vect[i].name, data: [[vect[i].ABV ,vect[i].EBC ]]});
+                vYZ.push({name: vect[i].name, data: [[vect[i].EBC ,vect[i].DLUO]]});
+                vZX.push({name: vect[i].name, data: [[vect[i].DLUO,vect[i].ABV ]]});
+            }
+
+        </script>
+
+        <!--CHART PACK (HTML)-->
+        <div id="wrapper">
+            <div id="container01" class = "row">
+                <!--CHART3D-->
+                <div id="chart3D" class = "col-sm-6 col-md-6 col-lg-6 text-center"></div>
+                <!--CHARTXY-->
+                <div id="chartXY" class = "col-sm-6 col-md-6 col-lg-6 text-center"></div>
+            </div>
+            <div id="container02" class = "row">
+                <!--CHARTYZ-->
+                <div id="chartYZ" class = "col-sm-6 col-md-6 col-lg-6 text-center"></div>
+                <!--CHARTZX-->
+                <div id="chartZX" class = "col-sm-6 col-md-6 col-lg-6 text-center"></div>
+            </div>
+        </div>
+
+        <!--CHART PACK ( JS )-->
+        <!--CHART3D-->
+        <script>
+            var myChart3D = Highcharts.chart('chart3D', {
+                chart: {
+                    type: 'scatter3d',
+                    margin: 100,
+                    options3d: {
+                        enabled: true,
+                        alpha:  30,         // TODO
+                        beta:   45,         // TODO
+                        depth:  250,        // TODO
+                        viewDistance: 5,    // TODO
+                        fitToPlot: false,   // TODO
+                        frame: {
+                            bottom: { size: 1, color: 'rgba(0,0,0,0.02)' }, // TODO
+                            back:   { size: 1, color: 'rgba(0,0,0,0.04)' }, // TODO
+                            side:   { size: 1, color: 'rgba(0,0,0,0.06)' }  // TODO
+                        }
+                    }
+                },
+                title: {
+                    text: '3D TITLE'
+                },
+                plotOptions: {
+                    scatter: {
+                        width: 10,
+                        height: 10,
+                        depth: 10
+                    }
+                },
+                xAxis: {
+                    title: {
+                        enabled: true,
+                        text: 'ABV'
+                    }
+                },
+                yAxis: {
+                    title: {
+                        enabled: true,
+                        text: 'EBC'
+                    }
+                },
+                zAxis: {
+                    title: {
+                        enabled: true,
+                        text: 'DLUO'
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                tooltip: {
+                    pointFormat: "ABV: {point.x}<br>EBC: {point.y}<br>DLUO: {point.z}<br>"
+                },
+                series: v3D
+            });
+            $(myChart3D.container).on('mousedown.hc touchstart.hc', function (eStart) {
+                eStart = myChart3D.pointer.normalize(eStart);
+                var posX    = eStart.chartX,
+                    posY    = eStart.chartY,
+                    alpha   = myChart3D.options.chart.options3d.alpha,
+                    beta    = myChart3D.options.chart.options3d.beta,
+                    newAlpha,
+                    newBeta,
+                    sensitivity = 5;    // TODO
+                $(document).on({
+                    'mousemove.hc touchmove.hc': function (e) {
+                        e = myChart3D.pointer.normalize(e);
+                        newBeta  = beta  + (posX - e.chartX) / sensitivity;
+                        myChart3D.options.chart.options3d.beta = newBeta;
+                        newAlpha = alpha + (e.chartY - posY) / sensitivity;
+                        myChart3D.options.chart.options3d.alpha = newAlpha;
+                        myChart3D.redraw(false);
+                    },
+                    'mouseup touchend': function () {
+                        $(document).off('.hc');
+                    }
+                });
+            });
+        </script>
+        <!--CHARTXY-->
+        <script>
+            var myChartXY = Highcharts.chart('chartXY', {
+                chart: {
+                    type: 'scatter',
+                    margin: 75,
+                    zoomType: 'xy'
+                },
+                title: {
+                    text: 'SCATTER XY'
+                },
+                xAxis: {
+                    title: {
+                        enabled: true,
+                        text: 'ABV'
+                    }
+                },
+                yAxis: {
+                    title: {
+                        enabled: true,
+                        text: 'EBC'
+                    }
+                },
+                plotOptions: {
+                    scatter: {
+                        marker: {
+                            radius: 5,
+                            states: {
+                                hover: {
+                                    enabled: true,
+                                    lineColor: 'rgb(100,100,100)'
+                                }
+                            }
+                        },
+                        states: {
+                            hover: {
+                                marker: {
+                                    enabled: false
+                                }
+                            }
+                        },
+                        tooltip: {
+                            headerFormat: '<b>{series.name}</b><br>',
+                            pointFormat: 'ABV: {point.x}, EBC: {point.y}'
+                        }
+                    }
+                },
+                series: vXY
+            });
+        </script>
+        <!--CHARTYZ-->
+        <script>
+            var myChartYZ = Highcharts.chart('chartYZ', {
+                chart: {
+                    type: 'scatter',
+                    margin: 75,
+                    zoomType: 'xy'
+                },
+                title: {
+                    text: 'SCATTER YZ'
+                },
+                xAxis: {
+                    title: {
+                        enabled: true,
+                        text: 'EBC'
+                    }
+                },
+                yAxis: {
+                    title: {
+                        enabled: true,
+                        text: 'DLUO'
+                    }
+                },
+                plotOptions: {
+                    scatter: {
+                        marker: {
+                            radius: 5,
+                            states: {
+                                hover: {
+                                    enabled: true,
+                                    lineColor: 'rgb(100,100,100)'
+                                }
+                            }
+                        },
+                        states: {
+                            hover: {
+                                marker: {
+                                    enabled: false
+                                }
+                            }
+                        },
+                        tooltip: {
+                            headerFormat: '<b>{series.name}</b><br>',
+                            pointFormat: 'EBC: {point.x}, DLUO: {point.y}'
+                        }
+                    }
+                },
+                series: vYZ
+            });
+        </script>
+        <!--CHARTZX-->
+        <script>
+            var myChartZX = Highcharts.chart('chartZX', {
+                chart: {
+                    type: 'scatter',
+                    margin: 75,
+                    zoomType: 'xy'
+                },
+                title: {
+                    text: 'SCATTER ZX'
+                },
+                xAxis: {
+                    title: {
+                        enabled: true,
+                        text: 'DLUO'
+                    }
+                },
+                yAxis: {
+                    title: {
+                        enabled: true,
+                        text: 'ABV'
+                    }
+                },
+                plotOptions: {
+                    scatter: {
+                        marker: {
+                            radius: 5,
+                            states: {
+                                hover: {
+                                    enabled: true,
+                                    lineColor: 'rgb(100,100,100)'
+                                }
+                            }
+                        },
+                        states: {
+                            hover: {
+                                marker: {
+                                    enabled: false
+                                }
+                            }
+                        },
+                        tooltip: {
+                            headerFormat: '<b>{series.name}</b><br>',
+                            pointFormat: 'DLUO: {point.x}, ABV: {point.y}'
+                        }
+                    }
+                },
+                series: vZX
+            });
+        </script>
+	</body>
+</html>

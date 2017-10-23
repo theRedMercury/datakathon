@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="design/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="design/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="design/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="design/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Select 2 -->
+    <link href="design/vendor/select2/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+
+        /*.container {*/
+          html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0 0;
+        }
+
+        body, html {
+            height: 100%;
+        }
+
+        .bg { 
+            /* The image used */
+            background-image: url("images/bgg.png");
+
+            /* Full height */
+            height: 100%; 
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .btnNotRounded {border-radius: 0;}
+
+        .butt {
+           border: 1px outset white;
+           background-color: white;
+           height:100px;
+           width:100px;
+           cursor:pointer;
+        }
+
+        .butt2 {
+           border: 1px outset white;
+           background-color: white;
+           height:100px;
+           width:100px;
+           cursor:pointer;
+        }
+
+        .butt3 {
+           border: 1px outset white;
+           background-color: white;
+           height:100px;
+           width:160px;
+           cursor:pointer;
+        }
+
+        .img_thumb {
+            max-width: 100%;
+            max-height: 100%;
+            height:100px;
+            width:100px;
+        }
+
+        .img_thumb_small {
+            max-width: 50%;
+            max-height: 50%;
+            height:50px;
+            width:50px;
+        }
+
+        .img_thumb2 {
+            max-width: 150%;
+            max-height: 100%;
+            height:100px;
+            width:150px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container bg">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <form role="form">
+                    <fieldset>
+
+                        <div class="row" style="font-size: 20px; color: white; text-align: center; padding: 10px;background-color: #3366cc;">
+                            <label>Saved user profile</label>
+                            <img class="img_thumb_small" src="images/soiree_mousse.png" style="width: 80px"/>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                            <div class="col-md-4 col-sd-4 col-xs-4">
+                               <button type="button" class="butt">
+                                   <img class="img_thumb" src="images/multiple_glas.png"/>
+                               </button>
+                           </div>
+
+                           <div class="col-md-4 col-sd-4 col-xs-4">
+                               <button type="button" class="butt">
+                                   <img class="img_thumb" src="images/vacation.png"/>
+                               </button>
+                           </div>
+
+                           <div class="col-md-4 col-sd-4 col-xs-4">
+                               <button type="button" class="butt">
+                                   <img class="img_thumb" src="images/saint_patrick.png"/>
+                               </button>
+                           </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                           <div class="col-md-4 col-sd-4 col-xs-4">
+                                <button type="button" class="butt">
+                                    <img class="img_thumb" src="images/caps.png"/>
+                                </button>
+                            </div>
+
+                            <div class="col-md-4 col-sd-4 col-xs-4">
+                                <button type="button" class="butt">
+                                    <img class="img_thumb" src="images/flags.png"/>
+                                </button>
+                            </div>
+
+                            <div class="col-md-4 col-sd-4 col-xs-4">
+                                <button id="idButtonAdd" type="button" class="butt" style="font-size:50px; color: dark;">
+                                    +
+                                </button>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row" style="font-size: 20px; color: white; text-align: center; padding: 10px;background-color: #3366cc;">
+                            <label>Events - Datakathon Selection</label>
+                        </div>
+
+                        <br>
+
+                        <div class="row" style="padding-left: 20px;">
+                            <div class="col-md-6 col-sd-6 col-xs-6">
+                               <button type="button" class="butt3">
+                                   <img class="img_thumb2" src="images/yellow_brown.jpg"/>
+                               </button>
+                           </div>
+
+                          <div class="col-md-6 col-sd-6 col-xs-6">
+                               <button type="button" class="butt3">
+                                   <img class="img_thumb2" src="images/monkita.png"/>
+                               </button>
+                           </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row" style="padding-left: 20px;">
+                           <div class="col-md-6 col-sd-6 col-xs-6">
+                               <button type="button" class="butt3">
+                                    <img class="img_thumb2" src="images/duvel.png"/>
+                               </button>
+                           </div>
+
+                            <div class="col-md-6 col-sd-6 col-xs-6">
+                               <button type="button" class="butt3">
+                                   <img class="img_thumb2" src="images/charleroi.png"/>
+                               </button>
+                           </div>
+                        </div>
+                            
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="design/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="design/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="design/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="design/dist/js/sb-admin-2.js"></script>
+
+    <!-- Select 2 -->
+    <script src="design/select2/dist/js/select2.min.js"></script>
+
+    <!-- Scripts. -->
+    <script src="design/mouss/js/myscript.js"></script>
+	
+	<script>
+        
+        $(function(){
+            $('#idButtonAdd').on('click', function(){
+                window.location = "formulaire.php";
+            });
+        })
+
+    </script>
+
+</body>
+
+</html>

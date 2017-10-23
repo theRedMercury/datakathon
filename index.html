@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="design/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="design/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="design/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="design/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Select 2 -->
+    <link href="design/select2/dist/css/select2.min.css" rel="stylesheet" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style type="text/css">
+
+        /*.container {*/
+          html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0 0;
+        }
+
+        body, html {
+            height: 100%;
+        }
+
+        .bg { 
+            /* The image used */
+            background-image: url("images/index.png");
+
+            /* Full height */
+            height: 100%; 
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .btnNotRounded {border-radius: 0;}
+
+        .butt {
+           border: 1px outset white;
+           background-color: white;
+           height:100px;
+           width:100px;
+           cursor:pointer;
+        }
+
+        .butt2 {
+           border: 1px outset white;
+           background-color: white;
+           height:100px;
+           width:100px;
+           cursor:pointer;
+        }
+
+        .butt3 {
+           border: 1px outset white;
+           background-color: white;
+           height:100px;
+           width:160px;
+           cursor:pointer;
+        }
+
+        .img_thumb {
+            max-width: 100%;
+            max-height: 100%;
+            height:100px;
+            width:100px;
+        }
+
+        .img_thumb_small {
+            max-width: 50%;
+            max-height: 50%;
+            height:50px;
+            width:50px;
+        }
+
+        .img_thumb2 {
+            max-width: 150%;
+            max-height: 100%;
+            height:100px;
+            width:150px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container bg">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <form role="form">
+                    <fieldset>
+
+                        <div style="margin-top: 450px; margin-left: 45%;" >
+                            <button id="btnId" type="button">Lancer l'application</button>
+                        </div>
+                            
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="design/jquery/jquery.min.js"></script>
+
+    <script>
+        
+        $(function(){
+            $('.container').on('click', '#btnId', function(){
+                window.location = "tuiles.html";
+            });
+        })
+
+    </script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="design/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="design/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="design/js/sb-admin-2.js"></script>
+
+    <!-- Select 2 -->
+    <script src="design/select2/dist/js/select2.min.js"></script>
+
+    <!-- Scripts. -->
+    <script src="design/mouss/js/myscript.js"></script>
+
+</body>
+
+</html>
